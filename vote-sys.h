@@ -6,9 +6,12 @@
 #ifndef _VOTE-SYS_H_RPCGEN
 #define _VOTE-SYS_H_RPCGEN
 
-#define RPCGEN_VERSION	199506
-
 #include <rpc/rpc.h>
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 struct voter_pack {
@@ -20,86 +23,71 @@ struct voter_pack {
 	int voter_id;
 };
 typedef struct voter_pack voter_pack;
-#ifdef __cplusplus
-extern "C" bool_t xdr_voter_pack(XDR *, voter_pack*);
-#elif __STDC__
-extern  bool_t xdr_voter_pack(XDR *, voter_pack*);
-#else /* Old Style C */
-bool_t xdr_voter_pack();
-#endif /* Old Style C */
 
+#define VOTE_PROG 0x29356488
+#define VOTE_VER 1
 
-#define VOTE_PROG ((rpc_uint)0x29356488)
-#define VOTE_VER ((rpc_uint)1)
-
-#ifdef __cplusplus
-#define changepassword ((rpc_uint)1)
-extern "C" char ** changepassword_1(voter_pack *, CLIENT *);
-extern "C" char ** changepassword_1_svc(voter_pack *, struct svc_req *);
-#define zeroize ((rpc_uint)2)
-extern "C" char ** zeroize_1(void *, CLIENT *);
-extern "C" char ** zeroize_1_svc(void *, struct svc_req *);
-#define addvoter ((rpc_uint)3)
-extern "C" char ** addvoter_1(voter_pack *, CLIENT *);
-extern "C" char ** addvoter_1_svc(voter_pack *, struct svc_req *);
-#define votefor ((rpc_uint)4)
-extern "C" char ** votefor_1(voter_pack *, CLIENT *);
-extern "C" char ** votefor_1_svc(voter_pack *, struct svc_req *);
-#define listcandidates ((rpc_uint)5)
-extern "C" char ** listcandidates_1(void *, CLIENT *);
-extern "C" char ** listcandidates_1_svc(void *, struct svc_req *);
-#define votecount ((rpc_uint)6)
-extern "C" char ** votecount_1(voter_pack *, CLIENT *);
-extern "C" char ** votecount_1_svc(voter_pack *, struct svc_req *);
-#define viewresult ((rpc_uint)7)
-extern "C" char ** viewresult_1(voter_pack *, CLIENT *);
-extern "C" char ** viewresult_1_svc(voter_pack *, struct svc_req *);
-
-#elif __STDC__
-#define changepassword ((rpc_uint)1)
+#if defined(__STDC__) || defined(__cplusplus)
+#define changepassword 1
 extern  char ** changepassword_1(voter_pack *, CLIENT *);
 extern  char ** changepassword_1_svc(voter_pack *, struct svc_req *);
-#define zeroize ((rpc_uint)2)
+#define zeroize 2
 extern  char ** zeroize_1(void *, CLIENT *);
 extern  char ** zeroize_1_svc(void *, struct svc_req *);
-#define addvoter ((rpc_uint)3)
+#define addvoter 3
 extern  char ** addvoter_1(voter_pack *, CLIENT *);
 extern  char ** addvoter_1_svc(voter_pack *, struct svc_req *);
-#define votefor ((rpc_uint)4)
+#define votefor 4
 extern  char ** votefor_1(voter_pack *, CLIENT *);
 extern  char ** votefor_1_svc(voter_pack *, struct svc_req *);
-#define listcandidates ((rpc_uint)5)
+#define listcandidates 5
 extern  char ** listcandidates_1(void *, CLIENT *);
 extern  char ** listcandidates_1_svc(void *, struct svc_req *);
-#define votecount ((rpc_uint)6)
+#define votecount 6
 extern  char ** votecount_1(voter_pack *, CLIENT *);
 extern  char ** votecount_1_svc(voter_pack *, struct svc_req *);
-#define viewresult ((rpc_uint)7)
+#define viewresult 7
 extern  char ** viewresult_1(voter_pack *, CLIENT *);
 extern  char ** viewresult_1_svc(voter_pack *, struct svc_req *);
+extern int vote_prog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
-#else /* Old Style C */
-#define changepassword ((rpc_uint)1)
+#else /* K&R C */
+#define changepassword 1
 extern  char ** changepassword_1();
 extern  char ** changepassword_1_svc();
-#define zeroize ((rpc_uint)2)
+#define zeroize 2
 extern  char ** zeroize_1();
 extern  char ** zeroize_1_svc();
-#define addvoter ((rpc_uint)3)
+#define addvoter 3
 extern  char ** addvoter_1();
 extern  char ** addvoter_1_svc();
-#define votefor ((rpc_uint)4)
+#define votefor 4
 extern  char ** votefor_1();
 extern  char ** votefor_1_svc();
-#define listcandidates ((rpc_uint)5)
+#define listcandidates 5
 extern  char ** listcandidates_1();
 extern  char ** listcandidates_1_svc();
-#define votecount ((rpc_uint)6)
+#define votecount 6
 extern  char ** votecount_1();
 extern  char ** votecount_1_svc();
-#define viewresult ((rpc_uint)7)
+#define viewresult 7
 extern  char ** viewresult_1();
 extern  char ** viewresult_1_svc();
-#endif /* Old Style C */
+extern int vote_prog_1_freeresult ();
+#endif /* K&R C */
+
+/* the xdr functions */
+
+#if defined(__STDC__) || defined(__cplusplus)
+extern  bool_t xdr_voter_pack (XDR *, voter_pack*);
+
+#else /* K&R C */
+extern bool_t xdr_voter_pack ();
+
+#endif /* K&R C */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* !_VOTE-SYS_H_RPCGEN */
